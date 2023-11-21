@@ -1,0 +1,96 @@
+
+<!-- Template to edit a campground based on its ID -->
+
+<% layout('layout/base') %>
+
+<div class="row">
+    <h1 class="text-center mb-5 mt-5">Edit Campground</h1>
+
+    <div class="col-6 offset-3">
+
+        <!-- /campgrounds means that the response will be thrown to /campgrounds, which will catch it with a app.post statement in app.js -->
+        <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate class="validated-form">
+
+            <!-- Add title -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" name="campground[title]" id="title" value="<%= campground.title %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please add a value
+                </div>
+                <!-- The "name" attribute is used so that when the form is submitted, the data sent will include a key-value pair where key is the name attribute's value.-->
+                <!-- The "id" attribute is used with the <label> element's for attribute to link the label to the input. -->
+                <!-- "campground[title]" creates a nested object in the form data. When the form is submitted, the data sent will include an object named "campground" that has a property "title" with the value of whatever the user entered in the input field.-->
+                </div>
+
+            <!-- Add location -->
+            <div class="mb-3">
+                <label class="form-label" for="title">Location</label>
+                <input class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please add a value
+                </div>
+                <!-- The "name" attribute is used so that when the form is submitted, the data sent will include a key-value pair where key is the name attribute's value.-->
+                <!-- The "id" attribute is used with the <label> element's for attribute to link the label to the input. -->
+            </div>
+
+            <!-- Add Image -->
+            <div class="mb-3">
+                <label class="form-label" for="image">Image URL</label>
+                <input class="form-control" type="text" name="campground[image]" id="image" value="<%= campground.image %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please add a value
+                </div>
+                <!-- The "name" attribute is used so that when the form is submitted, the data sent will include a key-value pair where key is the name attribute's value.-->
+                <!-- The "id" attribute is used with the <label> element's for attribute to link the label to the input. -->
+            </div>
+
+            <!-- Add price -->
+            <div class="mb-3">
+                <label class="form-label" for="price">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.99" name="campground[price]" value="<%= campground.price %>" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please add a value
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Description -->
+            <div class="mb-4">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" name="campground[description]" id="description" required><%= campground.description %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please add a value
+                </div>
+                <!-- The "name" attribute is used so that when the form is submitted, the data sent will include a key-value pair where key is the name attribute's value.-->
+                <!-- The "id" attribute is used with the <label> element's for attribute to link the label to the input. -->
+            </div>
+
+                <!-- Submit campground -->
+            <div class="mb-3">
+                <button class="btn btn-primary">Update campground</button>
+            </div>
+
+            <a href="/campgrounds/<%= campground._id %>">Back to campground page</a>
+
+        </form>
+
+    </div>
+</div>

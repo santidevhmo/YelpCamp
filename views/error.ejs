@@ -1,0 +1,16 @@
+
+<!-- Template to display Errors -->
+
+<!-- Import header and footer partial (our base template) -->
+<% layout('layout/base') %>
+
+<!-- Alert component obtained from Bootstrap -->
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="alert alert-danger mt-5" role="alert">
+            <h4 class="alert-heading"> <%= err.message %> </h4>
+            <p> <%= err.stack %> </p>
+        </div>
+    </div>
+</div>
+
